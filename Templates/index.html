@@ -1,4 +1,3 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Travello template project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+{% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css'%}">
 <link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css'%}" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.css'%}">
@@ -251,13 +251,13 @@
 						<!-- Destination -->
 						<div class="destination item">
 							<div class="destination_image">
-								<img src="{% static 'images/destination_1.jpg' %}" alt="">
+								<img src="{% static 'images/destination_6.jpg' %}" alt="">
 								<div class="spec_offer text-center"><a href="#">Special Offer</a></div>
 							</div>
 							<div class="destination_content">
-								<div class="destination_title"><a href="destinations.html">Bali</a></div>
-								<div class="destination_subtitle"><p>Nulla pretium tincidunt felis, nec.</p></div>
-								<div class="destination_price">From $679</div>
+								<div class="destination_title"><a href="destinations.html">{{dest1.name}}</a></div>
+								<div class="destination_subtitle"><p>{{dest1.description}}</p></div>
+								<div class="destination_price">From ${{dest1.price}}</div>
 							</div>
 						</div>
 
