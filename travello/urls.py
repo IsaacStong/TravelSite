@@ -5,8 +5,11 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("news.html", views.news, name='news'),
-    path("index.html", views.index, name='index')
+    path("news", views.news, name='news'),
+    path("index", views.index, name='index'),
+    path("services", views.destinations, name='services'),
+    path("about", views.about, name='about'),
+    path("contact", views.contact, name='contact')
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

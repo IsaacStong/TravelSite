@@ -14,3 +14,15 @@ def index(request):
 
 def news(request):
     return render(request, "news.html")
+
+
+def destinations(request):
+    return render(request, "destinations.html")
+
+
+def contact(request):
+    return render(request, "contact.html")
+
+
+def about(request):
+    return render(request, "about.html")
