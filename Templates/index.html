@@ -7,6 +7,7 @@
 <meta name="description" content="Travello template project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {% load static %}
+{% static "images" as baseurl %}
 <link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css'%}">
 <link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css'%}" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.css'%}">
@@ -27,10 +28,10 @@
 				<div class="col">
 					<div class="header_content d-flex flex-row align-items-center justify-content-start">
 						<div class="header_content_inner d-flex flex-row align-items-end justify-content-start">
-							<div class="logo"><a href="index.html">Travello</a></div>
+							<div class="logo"><a href="index">Travello</a></div>
 							<nav class="main_nav">
 								<ul class="d-flex flex-row align-items-start justify-content-start">
-									<li class="active"><a href="index.html">Home</a></li>
+									<li class="active"><a href="index">Home</a></li>
 									<li><a href="about">About us</a></li>
 									<li><a href="services">Services</a></li>
 									<li><a href="news">News</a></li>
@@ -66,16 +67,16 @@
 
 	<div class="menu">
 		<div class="menu_header d-flex flex-row align-items-center justify-content-start">
-			<div class="menu_logo"><a href="index.html">Travello</a></div>
+			<div class="menu_logo"><a href="index">Travello</a></div>
 			<div class="menu_close_container ml-auto"><div class="menu_close"><div></div><div></div></div></div>
 		</div>
 		<div class="menu_content">
 			<ul>
-				<li><a href="inex.html">Home</a></li>
-				<li><a href="about.html">About us</a></li>
-				<li><a href="#">Services</a></li>
-				<li><a href="news.html">News</a></li>
-				<li><a href="contact.html">Contact</a></li>
+				<li><a href="index">Home</a></li>
+				<li><a href="about">About us</a></li>
+				<li><a href="services">Services</a></li>
+				<li><a href="news">News</a></li>
+				<li><a href="contact">Contact</a></li>
 			</ul>
 		</div>
 		<div class="menu_social">
@@ -248,78 +249,22 @@
 				<div class="col">
 					<div class="destinations_container item_grid">
 
-						<!-- Destination -->
+						<!-- Destinations -->
+						{% for dest in dests %}
 						<div class="destination item">
 							<div class="destination_image">
-								<img src="{% static 'images/destination_6.jpg' %}" alt="">
-								<div class="spec_offer text-center"><a href="#">Special Offer</a></div>
+								<img src="{{baseurl}}/{{dest.img}}" alt="">
+								{% if dest.offer %}
+								<div class="spec_offer text-center"><a href="services">Special Offer</a></div>
+								{% endif %}
 							</div>
 							<div class="destination_content">
-								<div class="destination_title"><a href="destinations.html">{{dest1.name}}</a></div>
-								<div class="destination_subtitle"><p>{{dest1.description}}</p></div>
-								<div class="destination_price">From ${{dest1.price}}</div>
+								<div class="destination_title"><a href="services">{{dest.name}}</a></div>
+								<div class="destination_subtitle"><p>{{dest.description}}</p></div>
+								<div class="destination_price">From ${{dest.price}}</div>
 							</div>
 						</div>
-
-						<!-- Destination -->
-						<div class="destination item">
-							<div class="destination_image">
-								<img src="{% static 'images/destination_2.jpg' %}" alt="">
-							</div>
-							<div class="destination_content">
-								<div class="destination_title"><a href="destinations.html">Indonesia</a></div>
-								<div class="destination_subtitle"><p>Nulla pretium tincidunt felis, nec.</p></div>
-								<div class="destination_price">From $679</div>
-							</div>
-						</div>
-
-						<!-- Destination -->
-						<div class="destination item">
-							<div class="destination_image">
-								<img src="{% static 'images/destination_3.jpg' %}" alt="">
-							</div>
-							<div class="destination_content">
-								<div class="destination_title"><a href="destinations.html">San Francisco</a></div>
-								<div class="destination_subtitle"><p>Nulla pretium tincidunt felis, nec.</p></div>
-								<div class="destination_price">From $679</div>
-							</div>
-						</div>
-
-						<!-- Destination -->
-						<div class="destination item">
-							<div class="destination_image">
-								<img src="{% static 'images/destination_4.jpg' %}" alt="">
-							</div>
-							<div class="destination_content">
-								<div class="destination_title"><a href="destinations.html">Paris</a></div>
-								<div class="destination_subtitle"><p>Nulla pretium tincidunt felis, nec.</p></div>
-								<div class="destination_price">From $679</div>
-							</div>
-						</div>
-
-						<!-- Destination -->
-						<div class="destination item">
-							<div class="destination_image">
-								<img src="{% static 'images/destination_5.jpg' %}" alt="">
-							</div>
-							<div class="destination_content">
-								<div class="destination_title"><a href="destinations.html">Phi Phi Island</a></div>
-								<div class="destination_subtitle"><p>Nulla pretium tincidunt felis, nec.</p></div>
-								<div class="destination_price">From $679</div>
-							</div>
-						</div>
-
-						<!-- Destination -->
-						<div class="destination item">
-							<div class="destination_image">
-								<img src="{% static 'images/destination_6.jpg' %}" alt="">
-							</div>
-							<div class="destination_content">
-								<div class="destination_title"><a href="destinations.html">Mykonos</a></div>
-								<div class="destination_subtitle"><p>Nulla pretium tincidunt felis, nec.</p></div>
-								<div class="destination_price">From $679</div>
-							</div>
-						</div>
+						{% endfor %}
 
 					</div>
 				</div>

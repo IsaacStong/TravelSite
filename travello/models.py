@@ -8,3 +8,4 @@ class Destinations:
     img: str
     description: str
     price: str
+    offer: bool
