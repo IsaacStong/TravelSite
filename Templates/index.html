@@ -7,7 +7,6 @@
 <meta name="description" content="Travello template project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {% load static %}
-{% static "images" as baseurl %}
 <link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css'%}">
 <link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css'%}" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.css'%}">
@@ -35,6 +34,13 @@
 									<li><a href="about">About us</a></li>
 									<li><a href="services">Services</a></li>
 									<li><a href="news">News</a></li>
+									{% if user.is_authenticated %}
+									<li>Hello {{user.username}}</li>
+									<li><a href="accounts/logout">Logout</a></li>
+									{% else %}
+									<li><a href="accounts/login">Login</a></li>
+									<li><a href="accounts/register">Register</a></li>
+									{%endif%}
 									<li><a href="contact">Contact</a></li>
 								</ul>
 							</nav>
@@ -253,14 +259,15 @@
 						{% for dest in dests %}
 						<div class="destination item">
 							<div class="destination_image">
-								<img src="{{baseurl}}/{{dest.img}}" alt="">
+								<img src="{{dest.img.url}}">
+								<!--<img src="{{baseurl}}/{{dest.img}}" alt=""> -->
 								{% if dest.offer %}
 								<div class="spec_offer text-center"><a href="services">Special Offer</a></div>
 								{% endif %}
 							</div>
 							<div class="destination_content">
 								<div class="destination_title"><a href="services">{{dest.name}}</a></div>
-								<div class="destination_subtitle"><p>{{dest.description}}</p></div>
+								<div class="destination_subtitle"><p>{{dest.desc}}</p></div>
 								<div class="destination_price">From ${{dest.price}}</div>
 							</div>
 						</div>
@@ -271,6 +278,7 @@
 			</div>
 		</div>
 	</div>
+
 
 	<!-- Testimonials -->
 

@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from .models import Destination
+from .models import Destinations
 
 
 # Create your views here.
+'''
 def index(request):
     dest1 = Destination()
     dest1.name = "Greece"
@@ -48,7 +49,7 @@ def index(request):
 
     dest = [dest1, dest2, dest3, dest4, dest5, dest6]
     return render(request, "index.html", {'dests': dest})
-
+'''
 
 def news(request):
     return render(request, "news.html")
@@ -64,3 +65,7 @@ def contact(request):
 
 def about(request):
     return render(request, "about.html")
+
+def index(request):
+    dest = Destinations.objects.all()
+    return render(request, "index.html", {'dests': dest})
